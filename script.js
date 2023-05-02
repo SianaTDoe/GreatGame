@@ -31,6 +31,11 @@ function generateApple() {
   game.appendChild(appleImage);
 }
 
-for (let i = 0; i < 200; i++) {
+setInterval(() => {
   generateApple();
+}, 500);
+
+function moveApple() {
+  appleImage.style.transform = "translateY(100%)";
+  appleImage.style.transition = "3s";
 }

@@ -1,26 +1,39 @@
 * {
-    margin : 0;
-    padding : 0;
+  margin: 0;
+  padding: 0;
 }
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 #game {
-    height: 100%;
-    position: relative;
-    background-image: url("./resources/backgroundBamboo.png");
+  height: 100%;
+  position: relative;
+  background-image: url("./resources/backgroundBamboo.png");
 }
 
 .redPanda {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 300px
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 300px;
+  z-index: 2;
 }
 
 .apple {
-    position: absolute;
-    height: 50px
+  position: absolute;
+  height: 50px;
+  z-index: 1;
+  animation: fallingApple 3s linear;
+}
+
+@keyframes fallingApple {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(95vh);
+  }
 }
