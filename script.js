@@ -26,16 +26,19 @@ function generateApple() {
   let appleImage = document.createElement("img");
   appleImage.src = "resources/apple.png";
   appleImage.classList.add("apple");
+  // appleImage.style.tr
   appleImage.style.left =
     Math.floor(Math.random() * (window.innerWidth - 50)) + "px";
   game.appendChild(appleImage);
+
+  // if(position pomme === bas ecran) {
+  //   .style.opacity = 0
+  // }
 }
 
 setInterval(() => {
   generateApple();
-}, 500);
+}, 1000);
 
 function moveApple() {
-  appleImage.style.transform = "translateY(100%)";
-  appleImage.style.transition = "3s";
 }
