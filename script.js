@@ -1,5 +1,7 @@
-let redPanda = document.querySelector(".redPanda");
+const redPanda = document.querySelector(".redPanda");
+const appleCounter = document.getElementById("appleCounter");
 let currentPosition = 0;
+let appleScore = 0;
 
 // Red Panda
 document.addEventListener("keydown", function (event) {
@@ -26,45 +28,45 @@ function generateApple() {
   let appleImage = document.createElement("img");
   appleImage.src = "resources/apple.png";
   appleImage.classList.add("apple");
-  // appleImage.style.transform = `translateY(${500}px)`;
-  // appleImage.style.transition = "translate 3s";
   appleImage.style.left =
     Math.floor(Math.random() * (window.innerWidth - 50)) + "px";
   game.appendChild(appleImage);
-
-  // if(position pomme === bas ecran) {
-  //   .style.opacity = 0
-  // }
 }
 
 setInterval(() => {
   generateApple();
 }, 1000);
 
-function moveApple() {}
 function checkApples() {
   const apples = document.querySelectorAll(".apple");
-  // console.log(apples);
+  const redPandaRect = redPanda.getBoundingClientRect();
+  console.log("redPandaRect", redPandaRect);
+  console.log("apples", apples);
   apples.forEach((a) => {
     const appleRect = a.getBoundingClientRect();
-    if (appleRect.top + appleRect.height >= window.innerHeight) {
+
+    if (appleRect.bottom >= window.innerHeight) {
       a.remove();
+      return;
+    }
+
+    if (
+      (appleRect.left > redPandaRect.left &&
+        appleRect.left < redPandaRect.right) ||
+      (appleRect.right > redPandaRect.left &&
+        appleRect.right < redPandaRect.right )
+    ) {
+      if (appleRect.bottom > redPandaRect.top) {
+        a.remove();
+        appleCount();
+      }
     }
   });
 }
-setInterval(checkApples, 1000);
+setInterval(checkApples, 250);
 
 // Game
-let appleCounter = document.getElementById("appleCounter");
-let apple = document.querySelectorAll(".apple");
-let appleRect = apple.getBoundingClientRect();
-let redPandaRect = redPanda.getBoundingClientRect();
-
 function appleCount() {
-  appleCounter = 0;
-  forEach
-  if (appleRect.bottom === redPandaRect.top) {
-    appleCounter++;
-    counterElement.innerHTML = appleCounter;
-  }
+  appleScore++;
+  appleCounter.innerText = appleScore;
 }
