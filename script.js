@@ -1,6 +1,7 @@
-const redPanda = document.querySelector(".redPanda");
+const game = document.querySelector("#game");
+const redPanda = document.getElementById("redPanda");
 const appleCounter = document.getElementById("appleCounter");
-let currentPosition = 0;
+let pandaPosition = 0;
 let appleScore = 0;
 
 // Red Panda
@@ -8,22 +9,20 @@ document.addEventListener("keydown", function (event) {
   const redPandaWidth = redPanda.getBoundingClientRect().width;
   if (event.key === "ArrowRight") {
     redPanda.style.transform = "rotateY(0)";
-    if (currentPosition < window.innerWidth - redPandaWidth * 1.2) {
-      currentPosition += 50;
-      redPanda.style.left = currentPosition + "px";
+    if (pandaPosition < window.innerWidth - redPandaWidth * 1.2) {
+      pandaPosition += 50;
+      redPanda.style.left = pandaPosition + "px";
     }
   } else if (event.key === "ArrowLeft") {
     redPanda.style.transform = "rotateY(180deg)";
-    if (currentPosition > 0) {
-      currentPosition -= 50;
-      redPanda.style.left = currentPosition + "px";
+    if (pandaPosition > 0) {
+      pandaPosition -= 50;
+      redPanda.style.left = pandaPosition + "px";
     }
   }
 });
 
 // Apples
-let game = document.querySelector("#game");
-
 function generateApple() {
   let appleImage = document.createElement("img");
   appleImage.src = "resources/apple.png";
@@ -32,7 +31,6 @@ function generateApple() {
     Math.floor(Math.random() * (window.innerWidth - 50)) + "px";
   game.appendChild(appleImage);
 }
-
 setInterval(() => {
   generateApple();
 }, 1000);
@@ -40,8 +38,6 @@ setInterval(() => {
 function checkApples() {
   const apples = document.querySelectorAll(".apple");
   const redPandaRect = redPanda.getBoundingClientRect();
-  console.log("redPandaRect", redPandaRect);
-  console.log("apples", apples);
   apples.forEach((a) => {
     const appleRect = a.getBoundingClientRect();
 
