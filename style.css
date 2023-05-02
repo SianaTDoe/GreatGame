@@ -12,6 +12,7 @@ body {
   height: 100%;
   position: relative;
   background-image: url("./resources/backgroundBamboo.png");
+  overflow: hidden;
 }
 
 .redPanda {
@@ -26,6 +27,7 @@ body {
   position: absolute;
   height: 50px;
   z-index: 1;
+  top: 0;
   animation: fallingApple 3s linear forwards;
 }
 
@@ -34,11 +36,29 @@ body {
     transform: translateY(0);
   }
   99% {
-    transform: translateY(94vh);
+    transform: translateY(100vh);
+    /* transform: translateY(94vh); */
     opacity: 1
   }
   100% {
-    transform: translateY(94vh);
+    transform: translateY(100vh);
+    /* transform: translateY(94vh); */
     opacity: 0
   }
+}
+
+
+/* APPLE COUNTER */ 
+.appleCounter {
+    position: absolute;
+    right: 20px;
+    top: 20px
+}
+
+.appleCounter span {
+    font-size: 50px
+}
+
+.appleCounter img {
+    height: 50px
 }
