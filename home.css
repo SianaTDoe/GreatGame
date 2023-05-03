@@ -1,4 +1,4 @@
-#home {
+body {
   height: 100%;
   background: linear-gradient(
       29deg,
@@ -9,41 +9,70 @@
     linear-gradient(208deg, rgb(105 105 229 / 80%), rgba(0, 0, 255, 0) 70.71%);
 }
 
-#home h1 {
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
   font-size: 50px;
   text-align: center;
   margin: 0 auto 100px;
   font-family: cursive;
-  padding-top: 50px
+  padding-top: 50px;
 }
 
-.flexDiv {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 75%
+.play {
+  font-size: 100px;
+  text-shadow: -2px 3px 2px #060008;
+  cursor: pointer;
 }
+
+.play:hover {
+    text-shadow: -6px 10px 2px #060008
+}
+
 
 #themeSelector {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 60%;
 }
+
+#themeIcons {
+  display: flex;
+  flex-direction: column;
+  text-align:center;
+  width: 50%
+}
+
+.themes {
+  width: max-content;
+  border-radius: 7px;
+  border-color: grey;
+  padding: 0 20px 20px
+}
+
+
+.themes legend {
+    text-align: left;
+  font-family: cursive;
+}
+
+
+.icon {
+    font-size: 70px;
+    cursor: pointer;
+    margin: 15px
+  }
+  .icon:hover {
+      text-shadow: -2px 3px 2px #060008;
+  }
+  
 
 #preview {
   display: flex;
 }
 
-.buttonsDiv {
-    margin: 50px 0 0;
-    cursor: pointer;
-}
-
-.icon {
-  font-size: 50px;
-}
-
-.button {
-  font-size: 50px;
-  text-shadow: -2px 3px 2px #060008;
-  color: grey
-}
