@@ -1,5 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
 body {
   height: 100%;
+}
+
+body {
   background: linear-gradient(
     208deg,
     rgb(105 105 229 / 80%),

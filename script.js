@@ -1,6 +1,6 @@
 import themes from "./themes.js";
 const themeParam = new URL(location.href).searchParams.get("theme");
-const theme = themes[themeParam] || Object.values(themes)[0]
+const theme = themes[themeParam] || Object.values(themes)[0];
 
 const game = document.querySelector("#game");
 const playerDiv = document.getElementById("player");
@@ -44,18 +44,25 @@ function generateItem() {
       />`;
   game.insertAdjacentHTML("beforeend", itemDiv);
 }
-setInterval(() => {
-  generateItem();
-}, 1000);
+let difficulty = 1;
+let spawnIntervalDelay = 1000;
+let spawnInterval;
+function initSpawnInterval() {
+  console.log(spawnIntervalDelay);
+  spawnInterval = setInterval(() => {
+    generateItem();
+  }, spawnIntervalDelay);
+}
+initSpawnInterval();
 
-function checkItems() {
-  const items = document.querySelectorAll(".item");
+function checkObjects() {
+  const objects = document.querySelectorAll(".item");
   const playerRect = playerDiv.getBoundingClientRect();
-  items.forEach((a) => {
-    const itemRect = a.getBoundingClientRect();
+  objects.forEach((o) => {
+    const itemRect = o.getBoundingClientRect();
 
     if (itemRect.bottom >= window.innerHeight) {
-      a.remove();
+      o.remove();
       return;
     }
 
@@ -64,15 +71,21 @@ function checkItems() {
       (itemRect.right > playerRect.left && itemRect.right < playerRect.right)
     ) {
       if (itemRect.bottom > playerRect.top) {
-        a.remove();
+        o.remove();
         itemCount();
       }
     }
   });
 }
-setInterval(checkItems, 250);
+setInterval(checkObjects, 250);
 
 function itemCount() {
   playerScore++;
   score.innerText = playerScore;
+  if (!(playerScore % 10) && playerScore >= difficulty * 10) {
+    difficulty++;
+    spawnIntervalDelay *= 0.9;
+    clearInterval(spawnInterval);
+    initSpawnInterval();
+  }
 }

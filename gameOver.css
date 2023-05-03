@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    background: linear-gradient(
+    208deg,
+    rgb(105 105 229 / 80%),
+    rgba(0, 0, 255, 0) 70.71%
+  ),
+  linear-gradient(99deg, rgb(109 219 109 / 80%), rgba(0, 255, 0, 0) 70.71%),
+  linear-gradient(308deg, rgb(227 108 108 / 80%), rgba(255, 0, 0, 0) 70.71%)
+  }
+  
+  div span {
+    font-size: 200px;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
