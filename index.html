@@ -4,17 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="style.css" rel="stylesheet" />
+    <link href="game.css" rel="stylesheet" />
+    <link href="home.css" rel="stylesheet" />
     <title>Document</title>
   </head>
   <body>
-    <section id="game">
-      <img id="redPanda" src="resources/redPanda.png" />
-      <div class="appleCounter">
-        <span id="appleCounter">0</span>
-        <img src="resources/apple.png" />
+    <section id="home">
+      <h1>The Great Game</h1>
+
+      <div class="flexDiv">
+        <div id="themeSelector">
+          <div class="themes">
+            <span class="icon redPanda">🍎</span>
+            <span class="icon dino">🥚</span>
+          </div>
+
+          <div class="buttonsDiv">
+            <span class="button play">▶</span>
+          </div>
+        </div>
+
+        <div id="preview">
+          <img src="resources/redPanda.png" />
+        </div>
       </div>
     </section>
   </body>
-  <script src="script.js"></script>
+  <script type="module" src="home.js"></script>
 </html>

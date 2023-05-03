@@ -1,0 +1,49 @@
+#home {
+  height: 100%;
+  background: linear-gradient(
+      29deg,
+      rgb(227 108 108 / 80%),
+      rgba(255, 0, 0, 0) 70.71%
+    ),
+    linear-gradient(290deg, rgb(109 219 109 / 80%), rgba(0, 255, 0, 0) 70.71%),
+    linear-gradient(208deg, rgb(105 105 229 / 80%), rgba(0, 0, 255, 0) 70.71%);
+}
+
+#home h1 {
+  font-size: 50px;
+  text-align: center;
+  margin: 0 auto 100px;
+  font-family: cursive;
+  padding-top: 50px
+}
+
+.flexDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 75%
+}
+
+#themeSelector {
+  display: flex;
+  flex-direction: column;
+}
+
+#preview {
+  display: flex;
+}
+
+.buttonsDiv {
+    margin: 50px 0 0;
+    cursor: pointer;
+}
+
+.icon {
+  font-size: 50px;
+}
+
+.button {
+  font-size: 50px;
+  text-shadow: -2px 3px 2px #060008;
+  color: grey
+}
