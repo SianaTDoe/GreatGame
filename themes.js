@@ -1,13 +1,13 @@
 export default {
   redPanda: {
     player: "redPanda",
-    item: "egg",
-    background: "dinoBackground",
+    item: "apple",
+    background: "backgroundBamboo",
   },
   dino: {
     player: "dino",
-    item: "apple",
-    background: "backgroundBamboo",
+    item: "egg",
+    background: "dinoBackground",
   },
   gigaChad: {
     player: "gigaChad",

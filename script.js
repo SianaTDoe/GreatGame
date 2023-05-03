@@ -1,6 +1,6 @@
-
-import themes from "./themes.js"
-// const theme = new URL(location.href).searchParams.get("theme");
+import themes from "./themes.js";
+const themeParam = new URL(location.href).searchParams.get("theme");
+const theme = themes[themeParam] || Object.values(themes)[0]
 
 const game = document.querySelector("#game");
 const playerDiv = document.getElementById("player");
@@ -8,13 +8,13 @@ const score = document.getElementById("score");
 const scoreIcon = document.querySelector("#scoreDiv>img");
 let playerPosition = 0;
 let playerScore = 0;
-const theme = themes;
 
-function setupTheme(theme) {
+function setupTheme() {
   playerDiv.src = `resources/${theme.player}.png`;
   scoreIcon.src = `resources/${theme.item}.png`;
-  playerDiv.src = `resources/${theme.player}.png`;
+  game.style.background = `url("resources/${theme.background}.png")`;
 }
+setupTheme();
 
 // Player
 document.addEventListener("keydown", function (event) {
@@ -37,19 +37,12 @@ document.addEventListener("keydown", function (event) {
 // Item
 function generateItem() {
   const xPosition = Math.floor(Math.random() * (window.innerWidth - 50));
-  // const itemDiv = 
-  //   `<img 
-  //       class="item"
-  //       src="resources/${theme}.png"
-  //       style="left: ${xPosition}px"
-  //     />`;
-  const itemDiv = 
-    `<img 
+  const itemDiv = `<img
         class="item"
-        src="resources/apple.png"
+        src="resources/${theme.item}.png"
         style="left: ${xPosition}px"
       />`;
-  game.insertAdjacentHTML("beforeend",itemDiv);
+  game.insertAdjacentHTML("beforeend", itemDiv);
 }
 setInterval(() => {
   generateItem();
@@ -67,10 +60,8 @@ function checkItems() {
     }
 
     if (
-      (itemRect.left > playerRect.left &&
-        itemRect.left < playerRect.right) ||
-      (itemRect.right > playerRect.left &&
-        itemRect.right < playerRect.right )
+      (itemRect.left > playerRect.left && itemRect.left < playerRect.right) ||
+      (itemRect.right > playerRect.left && itemRect.right < playerRect.right)
     ) {
       if (itemRect.bottom > playerRect.top) {
         a.remove();
