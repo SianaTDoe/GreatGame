@@ -1,13 +1,13 @@
 export default {
   redPanda: {
     name: 'Red Panda',
-    player: "dino",
+    player: "redPanda",
     item: "egg",
     background: "dinoBackground",
   },
   dino: {
     name: "Dino",
-    player: "redPanda",
+    player: "dino",
     item: "apple",
     background: "backgroundBamboo",
   },

@@ -37,28 +37,30 @@ h1 {
 #themeSelector {
   display: flex;
   align-items: center;
-  justify-content: space-around;
   height: 60%;
 }
 
 #themeIcons {
-  display: flex;
-  flex-direction: column;
-  text-align:center;
-  width: 50%
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 50%;
+    align-items: center;
 }
 
 .themes {
   width: max-content;
   border-radius: 7px;
-  border-color: grey;
-  padding: 0 20px 20px
+  border: black 1px dashed;
+  padding: 7px 20px 20px
 }
 
 
 .themes legend {
     text-align: left;
   font-family: cursive;
+  font-size: 20px;
+  text-shadow: -2px 2px 2px #060008;
 }
 
 
