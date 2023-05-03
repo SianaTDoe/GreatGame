@@ -42,16 +42,16 @@ body {
 
 
 /* Score */ 
-.scoreDiv {
+#scoreDiv {
     position: absolute;
     right: 20px;
     top: 20px
 }
 
-.scoreDiv span {
+#scoreDiv span {
     font-size: 50px
 }
 
-.scoreDiv img {
+#scoreDiv img {
     height: 50px
 }

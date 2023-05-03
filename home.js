@@ -8,10 +8,18 @@ setInterval(() => {
 
 const icons = document.querySelectorAll(".icon");
 const imageToChange = document.querySelector(".imageToChange");
+const playBtn = document.querySelector(".play");
+let selectedTheme;
 
-icons.forEach((i) => {
-  i.addEventListener("click", function (event) {
-    const dataTheme = event.target.getAttribute("data-theme");
-    imageToChange.src = `resources/${themes[dataTheme].player}.png`;
-  });
-});
+icons.forEach((i) => i.addEventListener("click", handleChangeTheme));
+playBtn.addEventListener("click", handlePlay);
+
+function handleChangeTheme(e) {
+  const dataTheme = e.target.getAttribute("data-theme");
+  selectedTheme = dataTheme;
+  imageToChange.src = `resources/${themes[dataTheme].player}.png`;
+}
+
+function handlePlay() {
+  location.href = `game.html?theme=${selectedTheme}`;
+}

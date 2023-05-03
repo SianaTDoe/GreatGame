@@ -1,11 +1,20 @@
-console.log("What are you doing ? Feed the pet, not your curiosity !")
+
+import themes from "./themes.js"
+// const theme = new URL(location.href).searchParams.get("theme");
 
 const game = document.querySelector("#game");
 const playerDiv = document.getElementById("player");
 const score = document.getElementById("score");
+const scoreIcon = document.querySelector("#scoreDiv>img");
 let playerPosition = 0;
 let playerScore = 0;
-let theme = "apple";
+const theme = themes;
+
+function setupTheme(theme) {
+  playerDiv.src = `resources/${theme.player}.png`;
+  scoreIcon.src = `resources/${theme.item}.png`;
+  playerDiv.src = `resources/${theme.player}.png`;
+}
 
 // Player
 document.addEventListener("keydown", function (event) {
@@ -28,10 +37,16 @@ document.addEventListener("keydown", function (event) {
 // Item
 function generateItem() {
   const xPosition = Math.floor(Math.random() * (window.innerWidth - 50));
+  // const itemDiv = 
+  //   `<img 
+  //       class="item"
+  //       src="resources/${theme}.png"
+  //       style="left: ${xPosition}px"
+  //     />`;
   const itemDiv = 
     `<img 
         class="item"
-        src="resources/${theme}.png"
+        src="resources/apple.png"
         style="left: ${xPosition}px"
       />`;
   game.insertAdjacentHTML("beforeend",itemDiv);
