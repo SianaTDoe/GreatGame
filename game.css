@@ -22,7 +22,7 @@ body {
   z-index: 2;
 }
 
-.item {
+.object {
   position: absolute;
   height: 50px;
   z-index: 1;
@@ -39,18 +39,17 @@ body {
   }
 }
 
-
-/* Score */ 
-#scoreDiv {
-    position: absolute;
-    right: 20px;
-    top: 20px
+/* Score */
+.counterSection {
+  position: absolute;
+  right: 20px;
+  top: 20px;
 }
 
-#scoreDiv span {
-    font-size: 50px
+.counterSection span {
+  font-size: 50px;
 }
 
-#scoreDiv img {
-    height: 50px
+.counterSection img {
+  height: 50px;
 }

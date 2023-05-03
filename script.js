@@ -4,14 +4,18 @@ const theme = themes[themeParam] || Object.values(themes)[0];
 
 const game = document.querySelector("#game");
 const playerDiv = document.getElementById("player");
-const score = document.getElementById("score");
-const scoreIcon = document.querySelector("#scoreDiv>img");
+const itemCount = document.querySelector("#itemCountSection>span");
+const itemCountIcon = document.querySelector("#itemCountSection>img");
+const bombCount = document.querySelector("#bombCountSection>span");
+const bombCountIcon = document.querySelector("#bombCountSection>img");
 let playerPosition = 0;
 let playerScore = 0;
+let playerBomb = 0;
 
 function setupTheme() {
   playerDiv.src = `resources/${theme.player}.png`;
-  scoreIcon.src = `resources/${theme.item}.png`;
+  itemCountIcon.src = `resources/${theme.item}.png`;
+  bombCountIcon.src = `resources/${theme.bomb}.png`;
   game.style.background = `url("resources/${theme.background}.png")`;
 }
 setupTheme();
@@ -35,28 +39,37 @@ document.addEventListener("keydown", function (event) {
 });
 
 // Item
-function generateItem() {
+function createGameObject(type, xPosition) {
+  return `<img
+    class="object"
+    data-type="${type}"
+    src="resources/${theme[type]}.png"
+    style="left: ${xPosition}px"
+  />`;
+}
+function generateObject() {
   const xPosition = Math.floor(Math.random() * (window.innerWidth - 50));
-  const itemDiv = `<img
-        class="item"
-        src="resources/${theme.item}.png"
-        style="left: ${xPosition}px"
-      />`;
-  game.insertAdjacentHTML("beforeend", itemDiv);
+  const objectRand = Math.ceil(Math.random() * 100);
+  let gameObject;
+  if (objectRand <= 20) {
+    gameObject = createGameObject("bomb", xPosition);
+  } else {
+    gameObject = createGameObject("item", xPosition);
+  }
+  game.insertAdjacentHTML("beforeend", gameObject);
 }
 let difficulty = 1;
 let spawnIntervalDelay = 1000;
 let spawnInterval;
 function initSpawnInterval() {
-  console.log(spawnIntervalDelay);
   spawnInterval = setInterval(() => {
-    generateItem();
+    generateObject();
   }, spawnIntervalDelay);
 }
 initSpawnInterval();
 
 function checkObjects() {
-  const objects = document.querySelectorAll(".item");
+  const objects = document.querySelectorAll(".object");
   const playerRect = playerDiv.getBoundingClientRect();
   objects.forEach((o) => {
     const itemRect = o.getBoundingClientRect();
@@ -72,20 +85,33 @@ function checkObjects() {
     ) {
       if (itemRect.bottom > playerRect.top) {
         o.remove();
-        itemCount();
+        const objectType = o.dataset.type;
+        if (objectType === "item") {
+          handleGetItem();
+        } else if (objectType === "bomb") {
+          handleGetBomb();
+        }
       }
     }
   });
 }
 setInterval(checkObjects, 250);
 
-function itemCount() {
+function handleGetItem() {
   playerScore++;
-  score.innerText = playerScore;
+  itemCount.innerText = playerScore;
   if (!(playerScore % 10) && playerScore >= difficulty * 10) {
     difficulty++;
     spawnIntervalDelay *= 0.9;
     clearInterval(spawnInterval);
     initSpawnInterval();
+  }
+}
+
+function handleGetBomb() {
+  playerBomb++;
+  bombCount.innerText = playerBomb;
+  if (playerBomb >= 3) {
+    location.href = "/gameOver.html";
   }
 }
