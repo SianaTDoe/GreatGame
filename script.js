@@ -1,23 +1,23 @@
 const game = document.querySelector("#game");
-const redPanda = document.getElementById("redPanda");
-const appleCounter = document.getElementById("appleCounter");
-let pandaPosition = 0;
-let appleScore = 0;
+const player = document.getElementById("player");
+const counter = document.getElementById("counter");
+let playerPosition = 0;
+let playerScor = 0;
 
-// Red Panda
+// Red player
 document.addEventListener("keydown", function (event) {
-  const redPandaWidth = redPanda.getBoundingClientRect().width;
+  const playerWidth = player.getBoundingClientRect().width;
   if (event.key === "ArrowRight") {
-    redPanda.style.transform = "rotateY(0)";
-    if (pandaPosition < window.innerWidth - redPandaWidth * 1.2) {
-      pandaPosition += 50;
-      redPanda.style.left = pandaPosition + "px";
+    player.style.transform = "rotateY(0)";
+    if (playerPosition < window.innerWidth - playerWidth * 1.2) {
+      playerPosition += 50;
+      player.style.left = playerPosition + "px";
     }
   } else if (event.key === "ArrowLeft") {
-    redPanda.style.transform = "rotateY(180deg)";
-    if (pandaPosition > 0) {
-      pandaPosition -= 50;
-      redPanda.style.left = pandaPosition + "px";
+    player.style.transform = "rotateY(180deg)";
+    if (playerPosition > 0) {
+      playerPosition -= 50;
+      player.style.left = playerPosition + "px";
     }
   }
 });
@@ -37,7 +37,7 @@ setInterval(() => {
 
 function checkApples() {
   const apples = document.querySelectorAll(".apple");
-  const redPandaRect = redPanda.getBoundingClientRect();
+  const playerRect = player.getBoundingClientRect();
   apples.forEach((a) => {
     const appleRect = a.getBoundingClientRect();
 
@@ -47,12 +47,12 @@ function checkApples() {
     }
 
     if (
-      (appleRect.left > redPandaRect.left &&
-        appleRect.left < redPandaRect.right) ||
-      (appleRect.right > redPandaRect.left &&
-        appleRect.right < redPandaRect.right )
+      (appleRect.left > playerRect.left &&
+        appleRect.left < playerRect.right) ||
+      (appleRect.right > playerRect.left &&
+        appleRect.right < playerRect.right )
     ) {
-      if (appleRect.bottom > redPandaRect.top) {
+      if (appleRect.bottom > playerRect.top) {
         a.remove();
         appleCount();
       }
@@ -63,6 +63,6 @@ setInterval(checkApples, 250);
 
 // Game
 function appleCount() {
-  appleScore++;
-  appleCounter.innerText = appleScore;
+  playerScor++;
+  counter.innerText = playerScor;
 }
