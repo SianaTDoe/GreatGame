@@ -32,17 +32,17 @@ h1 {
   padding-top: 50px;
 }
 
-.play {
+#play {
   font-size: 100px;
   text-shadow: -2px 3px 2px #060008;
   cursor: pointer;
 }
 
-.play:hover {
+#play:hover {
   text-shadow: -6px 10px 2px #060008;
 }
 
-#themeSelector {
+.themeSection {
   display: flex;
   align-items: center;
   height: 60%;
@@ -56,14 +56,14 @@ h1 {
   align-items: center;
 }
 
-.themes {
+.themeSection fieldset {
   width: max-content;
   border-radius: 7px;
   border: black 1px dashed;
   padding: 7px 20px 20px;
 }
 
-.themes legend {
+.themeSection fieldset {
   text-align: left;
   font-family: cursive;
   font-size: 20px;

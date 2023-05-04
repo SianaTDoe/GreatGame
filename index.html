@@ -4,32 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="game.css" rel="stylesheet" />
-    <link href="home.css" rel="stylesheet" />
-    <title>Document</title>
+    <link href="index.css" rel="stylesheet" />
+    <title>The Great Game</title>
   </head>
   <body>
+    <section class="title randomColor">
+      <h1>The Great Game</h1>
+      <span id="play">▶</span>
+    </section>
 
-      <section class="title randomColor">
-      <h1>The Great Game </h1>
-        <span class="play">▶</span>
-      </section>
-
-      <section id="themeSelector">
-        <div id="themeIcons">
-          <fieldset class="themes">
+    <section class="themeSection">
+      <div id="themeIcons">
+        <fieldset>
           <legend>Choose your theme</legend>
-            <span class="icon redPanda" data-theme="redPanda">🍎</span>
-            <span class="icon dino" data-theme="dino">🥚</span>
-            <span class="icon gigaChad" data-theme="gigaChad">💪</span>
-          </div>
-
+          <div id="themeContainer"></div>
         </fieldset>
-
-        <div id="preview">
-          <img class="imageToChange" src="resources/redPanda.png" />
-        </div>
-      </section>
+      </div>
+      <div id="preview">
+        <img />
+      </div>
+    </section>
   </body>
-  <script type="module" src="home.js"></script>
+  <script type="module" src="index.js"></script>
 </html>
