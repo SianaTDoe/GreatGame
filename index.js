@@ -21,11 +21,15 @@ buildThemeList();
 
 const icons = document.querySelectorAll(".icon");
 const previewImg = document.querySelector("#preview>img");
-let selectedTheme;
+let selectedTheme = Object.keys(themes)[0];
+changePreview(selectedTheme)
 icons.forEach((i) => i.addEventListener("click", handleChangeTheme));
 function handleChangeTheme(e) {
   selectedTheme = e.target.getAttribute("data-theme");
-  previewImg.src = `resources/${themes[selectedTheme].player}.png`;
+  changePreview(selectedTheme)
+}
+function changePreview(theme){
+  previewImg.src = `resources/${themes[theme].player}.png`;
 }
 
 const playBtn = document.getElementById("play");
